@@ -16,8 +16,7 @@ object Dots {
     /** @param dots the dots that changed. */
     def onDotsChange(dots: Dots): Unit
   }
-}
-
+}// TODO must work on STATE model for monsters
 /** A list of dots. */
 class Dots {
 
