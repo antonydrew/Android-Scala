@@ -13,7 +13,7 @@ class DotGenerator(dots: Dots, controller: Controller, color: Int)
   extends AsyncTask[AnyRef, AnyRef, AnyRef] {
 
   /** Delay between generation of dots. */
-  val DELAY = 5000 // TODO externalize
+  val DELAY = 10000 // TODO externalize
 
   override protected def onProgressUpdate(values: AnyRef*) =
     controller.makeDot(dots, color) // this method runs on the UI thread!
@@ -26,4 +26,7 @@ class DotGenerator(dots: Dots, controller: Controller, color: Int)
     }
     null
   }
+
+
+
 }

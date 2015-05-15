@@ -3,16 +3,15 @@ package controller
 
 import android.graphics.Color
 import android.view.{MotionEvent, View}
+import edu.luc.etl.cs313.scala.uidemo.model.Dots
 
 import scala.collection.mutable.ArrayBuffer
-
-import model.Dots
-import view.DotView
 
 /** Listen for taps. */
 class TrackingTouchListener(dots: Dots) extends View.OnTouchListener {
 
   val tracks = new ArrayBuffer[Int]
+  //def MONSTER_DISPLAY = m.MonsterDiameter
 
   override def onTouch(v: View, evt: MotionEvent): Boolean = {
     val action = evt.getAction
@@ -29,6 +28,9 @@ class TrackingTouchListener(dots: Dots) extends View.OnTouchListener {
         for (i <- tracks) {
           val idx = evt.findPointerIndex(i)
           for (j <- 0 until evt.getHistorySize) {
+//            killMonster(dots,
+//              evt.getX(idx),
+//              evt.getY(idx),MONSTER_DISPLAY)
             addDot(
               dots,
               evt.getHistoricalX(idx, j),
@@ -43,6 +45,11 @@ class TrackingTouchListener(dots: Dots) extends View.OnTouchListener {
 
     for (i <- tracks) {
       val idx = evt.findPointerIndex(i)
+//      killMonster(dots,
+//        evt.getX(idx),//gets x coordinate of monster
+//        evt.getY(idx),MONSTER_DISPLAY //gets y coordinate of monster
+//
+//      )
       addDot(dots,
         evt.getX(idx),
         evt.getY(idx),
@@ -56,4 +63,16 @@ class TrackingTouchListener(dots: Dots) extends View.OnTouchListener {
 
   private def addDot(dots: Dots, x: Float, y: Float, p: Float, s: Float) =
     dots.addDot(x, y, Color.CYAN, ((p + 0.5) * (s + 0.5) * DOT_DIAMETER).toInt)
+
+
+///** instead of adding dots, we will remove monsters from screen
+//  as they are killed
+//   the function retrieves x and y to delete monster at that
+//   coordinate */
+//  private def killMonster(dots: Dots, x: Float, y: Float, display: Int) =
+//    dots.removeSingleMonster(x, y, display)
+
+
+
+
 }

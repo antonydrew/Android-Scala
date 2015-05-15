@@ -8,6 +8,18 @@
     android:layout_height="wrap_content"
     android:baselineAligned="false">
 
+    <!--<GridView xmlns:android="http://schemas.android.com/apk/res/android"-->
+              <!--android:id="@+id/gridview"-->
+              <!--android:layout_width="fill_parent"-->
+              <!--android:layout_height="fill_parent"-->
+              <!--android:columnWidth="90dp"-->
+              <!--android:numColumns="auto_fit"-->
+              <!--android:verticalSpacing="10dp"-->
+              <!--android:horizontalSpacing="10dp"-->
+              <!--android:stretchMode="columnWidth"-->
+              <!--android:gravity="center"-->
+            <!--/>-->
+
   <edu.luc.etl.cs313.scala.uidemo.view.DotView
       android:id="@+id/dots"
       android:focusableInTouchMode="true"
@@ -15,6 +27,13 @@
       android:layout_height="match_parent"
       android:layout_weight="1"
       android:background="@color/white"/>
+      <!--android:tileMode="repeat"/>-->
+      <!--android:background="@drawable/box1"/>-->
+
+    <!--android:background="@drawable/test"-->
+
+
+
 
   <LinearLayout
       android:orientation="horizontal"
@@ -61,4 +80,33 @@
         android:layout_width="0dp"
         android:layout_weight="1"/>
   </LinearLayout>
+
+    <!--<GridView xmlns:android="http://schemas.android.com/apk/res/android"-->
+              <!--android:id="@+id/gridview"-->
+              <!--android:layout_width="200dp"-->
+              <!--android:layout_height="200dp"-->
+              <!--android:columnWidth="10dp"-->
+              <!--android:numColumns="auto_fit"-->
+              <!--android:verticalSpacing="10dp"-->
+              <!--android:horizontalSpacing="10dp"-->
+              <!--android:stretchMode="columnWidth"-->
+              <!--android:padding="1dip"-->
+              <!--android:background="#FF0099CC"-->
+              <!--android:gravity="center"-->
+            <!--/>-->
+
 </LinearLayout>
+
+        <!--<GridView xmlns:android="http://schemas.android.com/apk/res/android"-->
+        <!--android:id="@+id/gridview"-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="fill_parent"-->
+        <!--android:columnWidth="90dp"-->
+        <!--android:numColumns="auto_fit"-->
+        <!--android:verticalSpacing="10dp"-->
+        <!--android:horizontalSpacing="10dp"-->
+        <!--android:stretchMode="columnWidth"-->
+        <!--android:gravity="center"-->
+        <!--/>-->
+
+

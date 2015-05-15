@@ -1,26 +1,19 @@
-[![Build Status](https://travis-ci.org/lucoodevcourse/uidemo-android-scala.svg?branch=master)](https://travis-ci.org/lucoodevcourse/uidemo-android-scala) 
-[![Coverage Status](https://img.shields.io/coveralls/lucoodevcourse/uidemo-android-scala.svg)](https://coveralls.io/r/lucoodevcourse/uidemo-android-scala) 
-[![Download](https://api.bintray.com/packages/lucoodevcourse/generic/uidemo-android-scala/images/download.svg) ](https://bintray.com/lucoodevcourse/generic/uidemo-android-scala/_latestVersion)
+# Q&A (300-500 words):
+**Note: ScalaDocs in doc folder of root project as well as STATE MODEL DIAGRAM...see YouTuve video as well!
 
-# Overview
 
-This is a standalone Scala-based version of the Dots/DotView/TouchMe MVC Android UI Demo from
-chapter 6 of
-[Programming Android, 2nd Edition](http://proquestcombo.safaribooksonline.com/book/programming/android/9781449332921)
-by Zigurd Mednieks et al., O'Reilly Media, 2012, ISBN-13: 978-1-4493-1664-8.
+## Pair Development
 
-Please refer to the book chapter for detailed information on this example.
+* Doc K has been helping me on this one especially with the ideas of thinking of the VIEW in an ABSTRACT manner (grid) and also with handling STATE...
 
-# Learning Objectives
+## State Diagram versus Actual Code
 
-* Mapping the model-view-controller (MVC) architecture to Android
-* Understanding the [difference between model-view-controller and model-view-adapter (MVA)](https://www.palantir.com/2009/04/model-view-adapter/)
-* Support for multiple view-controller pairs
-* Android application life cycle management
-* Defining custom view components in Android
-* Handling key presses and touch events 
-* Background activities using [AsyncTask](http://developer.android.com/reference/android/os/AsyncTask.html) 
+* The state diagram should be very close to the actual code though the code will probably have more LISTENERS and variables to handle SCORE and LEVELS etc...
 
-# Building and Running
+## Overall approach of Project and Trade-offs of MVC concept
 
-Please refer to [these notes](http://lucoodevcourse.bitbucket.org/notes/scalaandroiddev.html) for details.
+* I tried to keep this tough project simple by running tasks ASYNC in background.  The STATE (MOVE/VULNERABLE) could be thought of as a separate OBJECT or even WITHIN DOTS.SCALA CLASS itself.
+The big difference with MVC versus MVA is that the CONTROLLER is handling transactions between the MODEL and VIEW (though the MODEL can interact directly with the VIEW by emitting LISTENERS).
+Because the CONTROLLER is so important, care must be taken to WIRE the CONTROLLER with the MODEL etc...
+
+I did also try using GRIDVIEW to render squares on the GUI, but ended up simply drawing lines instead via OnDraw withing DotView.scala.

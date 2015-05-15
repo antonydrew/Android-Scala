@@ -94,12 +94,14 @@ trait Controller extends Activity with TypedActivityHolder {
       DOT_DIAMETER)
   }
 
+
   def connectListView(): Unit = {
     val scroll = findView(TR.scroll)
     scroll.post(new Runnable() { override def run() = scroll.fullScroll(View.FOCUS_DOWN) })
     val listView = findView(TR.list)
     for (d <- dotModel.getDots)
       listView.append(d.toString + String.format("%n"))
+
     // This listener provides a tiny bit of mediation from model to view.
     // Conceptually, it represents the dashed arrow (events) from model to view.
     dotModel.setDotsChangeListener(new Dots.DotsChangeListener {
@@ -112,4 +114,10 @@ trait Controller extends Activity with TypedActivityHolder {
       }
     })
   }
+
+
+
+
+
+
 }
