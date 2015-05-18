@@ -1,9 +1,88 @@
 package edu.luc.etl.cs313.scala.uidemo.model
 
 import android.graphics.Color
+import edu.luc.etl.cs313.scala.uidemo.model.Monsters.MonstersChangeListener
 
 import scala.collection.mutable.ListBuffer
 import scala.util.Random
+
+/**
+ *
+ * @param x
+ * @param y
+ * @param color
+ * @param diameter
+ * @param vulnerability
+ */
+case class Monster(x: Float, y: Float, color: Int, diameter: Int, vulnerability: Float) //DONE rename MONSTERS as singular dots evolve into monster
+
+
+object Monsters {
+  trait MonstersChangeListener {
+    /** @param monsters the monsters that changed. */
+    def onMonstersChange(monster: Monsters): Unit
+  }
+}
+
+/**
+ * Created class for Monsters by basically copying Dots class
+ */
+class Monsters {
+
+  private val monsters = new ListBuffer[Monsters]
+
+  private var monstersChangeListener: MonstersChangeListener = _
+
+  /** @param l set the change listener. */
+  def setDotsChangeListener(l: MonstersChangeListener) = monstersChangeListener = l
+
+  /** @return immutable list of dots. */
+  def getMonsters(): List[Monsters] = monsters.toList
+
+  /** @return the most recently added dot. */
+  def getLastMonster(): Monster = if (monsters.size <= 0) null else ???
+
+
+  def eraseMonster(x: Float, y: Float, color: Int, diameter: Int, vulnerability: Float): Unit = {
+    monsters -= monsters.last
+    notifyListener()
+  }
+
+
+  /** Vulnerability over time - want to use RANDOM but not sure how to tie it all together
+    * @param degree change for vulnerable state
+    */
+  def makeVulnerable(degree : Float) : Unit ={
+    for (monster <- monsters){
+      var makeVulnerable = Random.nextInt(5)
+      if (Random.nextFloat > degree){
+        ???
+      }
+    }
+    notifyListener()
+  }
+
+//  /** Change color based on vulnerability - yellow = vulnerable
+//    *
+//    */
+//  def changeColorMonster(): Unit = {
+//    getMonsters().foreach(monster =>
+//      if(monster.color == Color.GREEN){
+//        monster.color = Color.YELLOW
+//      }else{
+//        monster.color = Color.GREEN
+//      }
+//    )
+//    notifyListener()
+//  }
+
+  private def notifyListener(): Unit =
+    if (null != monstersChangeListener)
+      monstersChangeListener.onMonstersChange(this)
+
+
+
+}
 
 /**
  * A dot: the coordinates, color and size.
@@ -12,7 +91,7 @@ import scala.util.Random
  * @param color the color.
  * @param diameter dot diameter.
  */
-case class Dot(x: Float, y: Float, color: Int, diameter: Int)//, var vulnerability: Int)
+case class Dot(x: Float, y: Float, color: Int, diameter: Int)
 
 object Dots {
   trait DotsChangeListener {
@@ -20,8 +99,6 @@ object Dots {
     def onDotsChange(dots: Dots): Unit
   }
 }
-
-// TODO must work on STATE model for monsters or should I just leave "soft" states INSIDE this Model.Dots.scala file????
 
 /** A list of dots. */
 class Dots {
@@ -51,33 +128,20 @@ class Dots {
   }
 
   /**
-   * Made this function to erase a monster/dot by copying function above addDot
+   * Made this function to try and erase a dot
    * @param x
    * @param y
    * @param diameter
    */
-  def eraseDot(x: Float, y:Float, diameter: Int)={
-        for (current <- dots)
-          if(current.x > x-diameter && current.x < x+diameter && current.y > y-diameter && current.y < y+ diameter && current.color==Color.RED){
-            dots-= current
-          }
-        notifyListener()
+  def eraseDot(x: Float, y: Float, diameter: Int): Unit = {
+    for (dot <- dots)
+      if(dot.x > x-diameter && dot.x < x+diameter && dot.y > y-diameter && dot.y < y+ diameter){
+        dots-= dot
       }
+    notifyListener()
+  }
 
-    /** Vulnerability over time*
-      * @param percentage change for vulnerable state
-      */
-    def makeVulnerable(percentage : Float) : Unit ={
-      for (current <- dots){
-        var makeVulnerable = Random.nextInt(5)
-        if (Random.nextFloat > percentage){
-          ???
-        }
-      }
-      notifyListener()
-    }
-
-
+  
   /** Remove all dots. */
   def clearDots(): Unit = {
     dots.clear()

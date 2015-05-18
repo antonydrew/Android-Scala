@@ -47,6 +47,9 @@ object State {
 
     def getState(): DotsState = state
 
+    /** abstract state representing VULNERABILTY (1 of 2 states)
+      *
+      */
     def toVulnerableState(): Unit = setState(VULNERABLE)
 
     private val VULNERABLE = new DotsState {
@@ -55,10 +58,27 @@ object State {
 
       override def updateView(): Unit = ???
 
-      override def onTouch(v: View, event: MotionEvent): Boolean = ???
+      override def onTouch(v: View, event: MotionEvent): Boolean = true
 
       /** @param dots the dots that changed. */
-      override def onDotsChange(dots: Dots): Unit = ???
+      override def onDotsChange(dots: Dots): Unit = 1
+    }
+
+    /** abstract state representing SAFE (1 of 2 states)
+    *
+    */
+    def toSafeState(): Unit = setState(SAFE)
+
+    private val SAFE = new DotsState {
+
+      override def getId(): Int = ???
+
+      override def updateView(): Unit = ???
+
+      override def onTouch(v: View, event: MotionEvent): Boolean = false
+
+      /** @param dots the dots that changed. */
+      override def onDotsChange(dots: Dots): Unit = 0
     }
 
 

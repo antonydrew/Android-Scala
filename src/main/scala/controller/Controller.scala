@@ -63,10 +63,11 @@ trait Controller extends Activity with TypedActivityHolder {
     })
 
     findView(TR.button1).setOnClickListener(new View.OnClickListener {
-      override def onClick(v: View) = makeDot(dotModel, Color.RED)
+      override def onClick(v: View) =  dotModel.clearDots()
+      //override def onClick(v: View) = makeDot(dotModel, Color.RED)
     })
     findView(TR.button2).setOnClickListener(new View.OnClickListener {
-      override def onClick(v: View) = makeDot(dotModel, Color.GREEN)
+      override def onClick(v: View) = deleteDot(dotModel, Color.GREEN)
     })
 
     // This listener provides a tiny bit of mediation from model to view.
@@ -92,6 +93,19 @@ trait Controller extends Activity with TypedActivityHolder {
       DOT_DIAMETER + (Random.nextFloat() * (dotView.getHeight - pad)),
       color,
       DOT_DIAMETER)
+  }
+
+  /**
+   * @param dots the dots we're drawing
+   * @param color the color of the dot
+   */
+  def deleteDot(dots: Dots, color: Int): Unit = {
+    val position = dots.getLastDot()
+    val pad = (DOT_DIAMETER + 2) * 2
+    dots.eraseDot(
+      position.x,
+      position.y,
+      position.diameter)
   }
 
 
