@@ -1,7 +1,6 @@
 package edu.luc.etl.cs313.scala.uidemo
 package controller
 
-import android.R.color
 import android.graphics.Color
 import android.view.{MotionEvent, View}
 import edu.luc.etl.cs313.scala.uidemo.model.Dots
@@ -57,6 +56,13 @@ class TrackingTouchListener(dots: Dots) extends View.OnTouchListener {
   private def addDot(dots: Dots, x: Float, y: Float, p: Float, s: Float) =
     dots.addDot(x, y, Color.CYAN, ((p + 0.5) * (s + 0.5) * DOT_DIAMETER).toInt)
 
+  /**
+   * Inserted erase function here which calls from Dots class
+   * @param dots
+   * @param x
+   * @param y
+   * @param diameter
+   */
   private def eraseDot(dots: Dots, x: Float, y: Float, diameter:Int) =
     dots.eraseDot(x, y, diameter)
 

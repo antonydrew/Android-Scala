@@ -42,7 +42,14 @@ class Monsters {
   /** @return the most recently added dot. */
   def getLastMonster(): Monster = if (monsters.size <= 0) null else ???
 
-
+  /**
+   * 
+   * @param x
+   * @param y
+   * @param color
+   * @param diameter
+   * @param vulnerability
+   */
   def eraseMonster(x: Float, y: Float, color: Int, diameter: Int, vulnerability: Float): Unit = {
     monsters -= monsters.last
     notifyListener()
