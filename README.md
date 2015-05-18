@@ -24,4 +24,12 @@ I did also try using GRIDVIEW to render squares on the GUI, but ended up simply 
 
 Since I could NOT get proper functionality working, I ended up just modifying DOTS class intead [of using CUSTOM MONSTERS class}.
 
-A YouTube video can be seen here which demonstrates functionality of several projects.
+A YouTube video can be seen here which demonstrates functionality of several projects and BitBucket project links here: http://youtu.be/91nFHyWR6VU
+
+[YouTube](http://youtu.be/91nFHyWR6VU)
+
+[Project 1a HelloWorld](https://adrew@bitbucket.org/adrew/cs413f14)
+[Project 2 Shapes](https://adrew@bitbucket.org/adrew/cs413f14)
+[Project 3a & 3b Stopwatch](https://adrew@bitbucket.org/adrew/stopwatch-android-scala)
+[Make-up MidTerm](https://adrew@bitbucket.org/adrew/test2)
+[Project 5](https://bitbucket.org/adrew/uidemo-android-scala)

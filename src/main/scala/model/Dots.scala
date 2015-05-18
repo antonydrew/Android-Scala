@@ -43,7 +43,7 @@ class Monsters {
   def getLastMonster(): Monster = if (monsters.size <= 0) null else ???
 
   /**
-   * 
+   *
    * @param x
    * @param y
    * @param color
